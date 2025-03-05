@@ -46,7 +46,7 @@ public class Bot extends TelegramLongPollingBot {
                 /*
                     Меня зовут Михаил.
                     Я живу в городе Сочи.
-                    Программирую на языку Java.
+                    Программирую на языке Java.
                 */
                 String templateForName = "зовут ";
                 int leftIndexForName = textMessage.indexOf(templateForName);
