@@ -56,6 +56,11 @@ public class Bot extends TelegramLongPollingBot {
                     return;
                 }
                 int rightIndexForName = textMessage.indexOf(".", leftIndexForName + templateForName.length());
+                if (rightIndexForName == -1) {
+                    sendMessage.setText("Ввод имени некорректен :(\n" +
+                            "Повторите снова!");
+                    return;
+                }
                 String name = textMessage.substring(leftIndexForName + templateForName.length(), rightIndexForName);
 
                 System.out.println("Спарсенное имя: " + name);
