@@ -41,6 +41,24 @@ public class Bot extends TelegramLongPollingBot {
                         "кот-й поможет найти кандидатов на роль разработчиков\n" +
                         "в нужном городе и по нужной специальности");
                 sendMessage.setReplyMarkup(keyboardForButtonForStartTgBot);
+            } else if (textMessage.contains("зовут") && textMessage.contains("в городе") &&
+                            textMessage.contains("на языке")) {
+                /*
+                    Меня зовут Михаил.
+                    Я живу в городе Сочи.
+                    Программирую на языку Java.
+                */
+                String templateForName = "зовут ";
+                int leftIndexForName = textMessage.indexOf(templateForName);
+                if (leftIndexForName == -1) {
+                    sendMessage.setText("Ввод имени некорректен :(\n" +
+                            "Повторите снова!");
+                    return;
+                }
+                int rightIndexForName = textMessage.indexOf(".", leftIndexForName + templateForName.length());
+                String name = textMessage.substring(leftIndexForName + templateForName.length(), rightIndexForName);
+
+                System.out.println("Спарсенное имя: " + name);
             }
 
             try {
@@ -64,15 +82,10 @@ public class Bot extends TelegramLongPollingBot {
                     .build();
 
             if (callbackData.equals("запуск")) {
-                /*
-                Меня зовут Михаил.
-                Я живу в городе Сочи.
-                Программирую на языку Java.
-                */
                 editMessageText.setText("Напишите текст в следующем формате:\n" +
                         "\"Меня зовут \'Михаил\'.\n" +
                         "Я живу в городе \'Сочи\'.\n" +
-                        "Программирую на языку \'Java\'." +
+                        "Программирую на языке \'Java\'." +
                         "\"");
             }
 
