@@ -64,6 +64,11 @@ public class Bot extends TelegramLongPollingBot {
                     .build();
 
             if (callbackData.equals("запуск")) {
+                /*
+                Меня зовут Михаил.
+                Я живу в городе Сочи.
+                Программирую на языку Java.
+                */
                 editMessageText.setText("Напишите текст в следующем формате:\n" +
                         "\"Меня зовут \'Михаил\'.\n" +
                         "Я живу в городе \'Сочи\'.\n" +
